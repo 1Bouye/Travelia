@@ -149,6 +149,7 @@ body {
   #REUSED STYLE
 \*-----------------------------------*/
 
+.container{ padding-inline: 16px;}
 
 /*-----------------------------------*\
   #PRELOADER
@@ -178,10 +179,54 @@ body {
   0% { transform: translateY(0); }
   100% { transform: translateY(-10px); }
 }
+.preloader-inner{ position: relative; }
+
+.preloader-inner::after{
+  content: "";
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 80px;
+  height: 50px;
+  background-color: var(--bg-black-alpha-20);
+  filter: blur(4px);
+  animation: dropShadow 800ms ease-in-out infinite alternate;
+}
+@keyframes dropShadow {
+ 0% {width: 40%;}
+ 100% {width: 80%;}
+}
 
 /*-----------------------------------*\
   #HEADER
 \*-----------------------------------*/
+.navbar,
+.overlay{ display: none;}
+.header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header{
+  padding-block: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+}
+.header.active{
+  position: fixed;
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-1);
+
+  animation: slideIn 500ms ease forwards;
+}
+@keyframes slideIn {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+}
 
 /*-----------------------------------*\
   #HERO
